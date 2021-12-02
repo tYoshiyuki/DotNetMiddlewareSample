@@ -21,6 +21,6 @@ app.MapControllers();
 app.UseOpenApi();
 app.UseSwaggerUi3();
 
-app.UseLogging();
+app.UseStopwatch();
 
 app.Run();

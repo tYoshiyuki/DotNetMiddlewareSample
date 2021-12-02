@@ -20,7 +20,7 @@ namespace DotNetMiddlewareSample.NetCoreApi.Middleware
             sw.Start();
 
             // リクエスト実行時間をレスポンスヘッダーに記載します。
-            context.Response.OnStarting(x =>
+            context.Response.OnStarting(_ =>
             {
                 context.Response.Headers.Add("X-Execution-Time", new[] { sw.ElapsedMilliseconds.ToString() });
                 return Task.CompletedTask;
@@ -41,7 +41,7 @@ namespace DotNetMiddlewareSample.NetCoreApi.Middleware
         /// </summary>
         /// <param name="builder"><see cref="IApplicationBuilder"/></param>
         /// <returns><see cref="IApplicationBuilder"/></returns>
-        public static IApplicationBuilder UseLogging(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseStopwatch(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<StopwatchMiddleware>();
         }
